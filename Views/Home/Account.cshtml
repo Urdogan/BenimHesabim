@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["Deposit"] = "Deposit";
+    Customer customer = ViewBag.Customer;
+}
+@model List<BenimHesabim.Models.Log>
+<div class="text-center">
+    <h1 class="display-1">Hoşgeldin, @customer.Name</h1>
+</div>
+<div class="row">
+<div class="col-sm">
+    <p>Hesap Bakiyesi : @customer.Balance</p>
+</div>
+<div class="col-sm">
+<p class="text-center"> Hesap Hareketleri</p>
+<ul class="list-group">
+@foreach (var log in Model.Take(10))
+{
+    if(log.Type == "Deposit"){
+            <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-success">
+        <p class="font-weight-bold"> +@log.Amount </p>
+        <p class="font-italic"> @log.Type </p>
+        <span class="badge badge-warning badge-pill">@log.Date</span>
+     </li>
+    } else {
+            <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-danger">
+        <p class="font-weight-bold"> -@log.Amount </p>
+        <p class="font-italic"> @log.Type </p>
+        <span class="badge badge-warning badge-pill">@log.Date</span>
+     </li>
+    }
+
+}    
+</ul>
+</div>
+</div>

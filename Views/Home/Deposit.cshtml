@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Para Yatır";
+}
+@model Log;
+@ViewData["Title"]
+<form class="form-group" method="POST">
+    @Html.Label("Miktar:")
+    @Html.TextBoxFor(x => x.Amount)
+    <button class="btn btn-info" value="Deposit" type="submit">Yatır</button>
+</form>
